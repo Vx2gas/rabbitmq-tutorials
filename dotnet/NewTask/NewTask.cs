@@ -9,7 +9,7 @@ channel.QueueDeclare(queue: "task_queue",
                      durable: true,
                      exclusive: false,
                      autoDelete: false,
-                     arguments: null);
+					 arguments: new Dictionary<string, object>() { { "x-consumer-timeout", 300000 } });
 
 var message = GetMessage(args);
 var body = Encoding.UTF8.GetBytes(message);
